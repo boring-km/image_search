@@ -12,6 +12,8 @@ void main() {
     await viewModel.fetch('apple');
 
     var result = fakeJson.map((e) => Photo.fromJson(e)).toList();
+
+
     expect(
       viewModel.photoStream,
       emitsInOrder([

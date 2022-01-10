@@ -9,19 +9,10 @@ void main() {
     final viewModel = HomeViewModel(FakePhotoApiRepository()); // UI 분리했으니까!
 
     await viewModel.fetch('apple');
-    await viewModel.fetch('apple');
 
     var result = fakeJson.map((e) => Photo.fromJson(e)).toList();
 
-
-    expect(
-      viewModel.photoStream,
-      emitsInOrder([
-        equals([]),
-        equals(result),
-        equals(result),
-      ]),
-    );
+    expect(viewModel.photos, result);
   });
 }
 

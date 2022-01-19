@@ -2,12 +2,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:image_search/data/data_source/result.dart';
 import 'package:image_search/domain/repository/photo_api_repository.dart';
 import 'package:image_search/domain/model/photo.dart';
+import 'package:image_search/domain/use_case/get_photos_use_case.dart';
 import 'package:image_search/presentation/home/home_view_model.dart';
 
 void main() {
   test('Stream이 잘 동작해야 한다.', () async {
     // ViewModel만 테스트할 수 있게 나눈 것이다.
-    final viewModel = HomeViewModel(FakePhotoApiRepository()); // UI 분리했으니까!
+    final viewModel = HomeViewModel(GetPhotosUseCase(FakePhotoApiRepository())); // UI 분리했으니까!
 
     await viewModel.fetch('apple');
 
@@ -84,5 +85,6 @@ List<Map<String, dynamic>> fakeJson = [
     "user": "mploscar",
     "userImageURL":
     "https://cdn.pixabay.com/user/2016/01/05/14-08-20-943_250x250.jpg"
-  }
+  },
+
 ];
